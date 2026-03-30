@@ -16,7 +16,9 @@ public class UserController {
 
     @GetMapping("/{id}")
     //@HystrixCommand(fallbackMethod = "getUserFallback")
-    public UserDTO getUser(@PathVariable Long id) {
+    public UserDTO getUser(@PathVariable Long id) throws InterruptedException {
+        System.out.println("进来了。。。");
+        Thread.sleep(10000);
         return new UserDTO(id, "user_" + id, "user" + id + "@example.com");
     }
 

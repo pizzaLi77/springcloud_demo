@@ -13,9 +13,23 @@ eureka:
 feign:
   hystrix:
     enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 1000
+        readTimeout: 4000
 
 management:
   endpoints:
     web:
       exposure:
         include: hystrix.stream
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 8000

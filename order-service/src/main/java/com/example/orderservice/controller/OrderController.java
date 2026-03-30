@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -34,7 +35,9 @@ public class OrderController {
     @GetMapping("/{id}/with-user")
     public OrderWithUser getOrderWithUser(@PathVariable Long id) {
         Order order = new Order(id, "ORDER_" + id, 1L, 100.0);
+        System.out.println(new Date());
         UserDTO user = userClient.getUserById(order.getUserId());
+        System.out.println(new Date());
         return new OrderWithUser(order, user);
     }
 
